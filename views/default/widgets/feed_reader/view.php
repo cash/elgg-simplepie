@@ -34,7 +34,7 @@
       <?php if ($post_date) 
             {
       ?>
-        <div class="simplepie_date"><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></div>
+        <div class="simplepie_date">Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></div>
       <?php } ?>
 		</div>
  
