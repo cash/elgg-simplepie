@@ -14,14 +14,18 @@
     $post_date = $vars['entity']->post_date;
      
     $feed = new SimplePie($feed_url);
+    
+    $num_posts_in_feed = $feed->get_item_quantity();
+    if (!$num_posts_in_feed)
+      echo 'Cannot find feed. Check the feed url.';
 
 ?>
   <div class="simplepie_blog_title">
     <h2><a href="<?php echo $feed->get_permalink(); ?>"><?php echo $feed->get_title(); ?></a></h2>
   </div>
 <?php
-  if ($num_items > $feed->get_item_quantity())
-    $num_items = $feed->get_item_quantity();
+  if ($num_items > $num_posts_in_feed)
+    $num_items = $num_posts_in_feed;
     
   foreach ($feed->get_items(0,$num_items) as $item):
 ?>
