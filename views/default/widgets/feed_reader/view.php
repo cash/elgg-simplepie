@@ -13,16 +13,12 @@
     $num_items = $vars['entity']->num_items;
     $post_date = $vars['entity']->post_date;
      
-    echo $feed_url;
-    $feed = new SimplePie();
-    $feed->set_feed_url($feed_url);
-    //$feed->set_autodiscovery_level(SIMPLEPIE_LOCATOR_ALL);
-    $feed->init();
-    $feed->handle_content_type();
-echo $post_date;
-  echo $feed->get_item_quantity();
+    $feed = new SimplePie($feed_url);
+
 ?>
-<h1><a href="<?php echo $feed->get_permalink(); ?>"><?php echo $feed->get_title(); ?></a></h1><br />
+  <div class="simplepie_blog_title">
+    <h2><a href="<?php echo $feed->get_permalink(); ?>"><?php echo $feed->get_title(); ?></a></h2>
+  </div>
 <?php
   if ($num_items > $feed->get_item_quantity())
     $num_items = $feed->get_item_quantity();
@@ -30,13 +26,15 @@ echo $post_date;
   foreach ($feed->get_items(0,$num_items) as $item):
 ?>
  
-		<div class="item">
-			<p><h3><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h3></p>
-			<?php if ($excerpt) echo '<p>' . $item->get_description(true) . '</p>'; ?>
+		<div class="simplepie_item">
+		  <div class="simplepie_title">
+			  <h4><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h4>
+      </div>
+			<?php if ($excerpt) echo '<div class="simplepie_excerpt">' . $item->get_description(true) . '</div>'; ?>
       <?php if ($post_date) 
             {
       ?>
-              <p><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
+        <div class="simplepie_date"><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></div>
       <?php } ?>
 		</div>
  
@@ -48,5 +46,3 @@ echo $post_date;
     echo '<p>' . elgg_echo('simplepie:notset') . '</p>';      
   }
 ?>
-
-<!--			<p><?php //echo $item->get_description(); ?></p> -->
