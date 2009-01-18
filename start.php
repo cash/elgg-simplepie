@@ -8,7 +8,7 @@
   
   function simplepie_init() 
   {    
-    add_widget_type('feed_reader', 'Feed Reader Widget', 'single feed');
+    add_widget_type('feed_reader', elgg_echo('simplepie:widget'), elgg_echo('simplepie:description'));
   }
   
   register_elgg_event_handler('plugins_boot', 'system', 'simplepie_init');
