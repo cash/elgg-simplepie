@@ -34,7 +34,7 @@
 		  <div class="simplepie_title">
 			  <h4><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h4>
       </div>
-			<?php if ($excerpt) echo '<div class="simplepie_excerpt">' . $item->get_description(true) . '</div>'; ?>
+			<?php if ($excerpt) echo '<div class="simplepie_excerpt">' . strip_tags($item->get_description(true),'<a>') . '</div>'; ?>
       <?php if ($post_date) 
             {
       ?>
