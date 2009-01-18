@@ -1,4 +1,10 @@
 <?php
+  global $CONFIG;
+    
+  if (!class_exists('SimplePie'))
+  {
+    require_once $CONFIG->pluginspath . '/simplepie/simplepie.inc';
+  }
    
   $feed_url = $vars['entity']->feed_url;
   if($feed_url){

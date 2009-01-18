@@ -7,14 +7,7 @@
    **/
   
   function simplepie_init() 
-  {
-    global $CONFIG;
-    
-    if (!class_exists('SimplePie'))
-    {
-      require_once $CONFIG->pluginspath . '/simplepie/simplepie.inc';
-    }
-    
+  {    
     add_widget_type('feed_reader', 'Feed Reader Widget', 'single feed');
   }
   
