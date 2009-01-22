@@ -1,4 +1,5 @@
 <?php
+// http://simplepie.org/support/viewtopic.php?id=643
   global $CONFIG;
     
   if (!class_exists('SimplePie'))
@@ -13,7 +14,9 @@
     $num_items = $vars['entity']->num_items;
     $post_date = $vars['entity']->post_date;
      
-    $feed = new SimplePie($feed_url);
+    $cache_loc = $CONFIG->pluginspath . '/simplepie/cache';
+    
+    $feed = new SimplePie($feed_url, $cache_loc);
     
     $num_posts_in_feed = $feed->get_item_quantity();
     if (!$num_posts_in_feed)
