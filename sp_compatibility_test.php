@@ -141,6 +141,7 @@ table#chart tr.disabled td a {
 </style>
 
 
+  <div class="contentWrapper" style="margin:0;">
 
 <div id="elggreturn">
   <a href="javascript:history.go(-1)">Return to Tools Administration</a>
@@ -148,7 +149,6 @@ table#chart tr.disabled td a {
 
 <div id="site">
   <div id="content">
-
     <div class="chunk">
       <h2 style="text-align:center;">SimplePie Compatibility Test</h2>
       <table cellpadding="0" cellspacing="0" border="0" width="100%" id="chart">
@@ -267,6 +267,7 @@ table#chart tr.disabled td a {
 
   </div>
 
+</div>
 </div>
 
 <?php

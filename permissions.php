@@ -16,6 +16,8 @@
 }
 </style>
 
+<div class="contentWrapper" style="margin:0; min-height:340px;">
+
 <div id="elggreturn">
   <a href="javascript:history.go(-1)">Return to Tools Administration</a>
 </div>
@@ -32,7 +34,7 @@
   
 ?>
 </div>
-
+</div>
 
 <?php  
   $content = ob_get_clean();

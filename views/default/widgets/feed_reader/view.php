@@ -1,5 +1,5 @@
+<div class="contentWrapper">
 <?php
-// http://simplepie.org/support/viewtopic.php?id=643
   global $CONFIG;
     
   if (!class_exists('SimplePie'))
@@ -19,9 +19,13 @@
     $feed = new SimplePie($feed_url, $cache_loc);
     
     $num_posts_in_feed = $feed->get_item_quantity();
-    if (!$num_posts_in_feed)
-      echo 'Cannot find feed. Check the feed url.';
-
+    
+    // only display errors to profile owner
+    if (get_loggedin_userid() == page_owner())
+    {        
+      if (!$num_posts_in_feed)
+        echo 'Cannot find feed. Check the feed url.';
+    }
 ?>
   <div class="simplepie_blog_title">
     <h2><a href="<?php echo $feed->get_permalink(); ?>"><?php echo $feed->get_title(); ?></a></h2>
@@ -49,7 +53,9 @@
 
 <?php 
   } else {
-        
-    echo '<p>' . elgg_echo('simplepie:notset') . '</p>';      
+  
+    if (get_loggedin_userid() == page_owner())        
+      echo '<p>' . elgg_echo('simplepie:notset') . '</p>';      
   }
 ?>
+</div>
