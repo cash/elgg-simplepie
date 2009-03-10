@@ -6,7 +6,8 @@
   {
     require_once $CONFIG->pluginspath . '/simplepie/simplepie.inc';
   }
-   
+  
+  $blog_tags = '<a><p><br><b><i><em><del><pre><strong><ul><ol><li><img>';
   $feed_url = $vars['entity']->feed_url;
   if($feed_url){
 
@@ -41,9 +42,15 @@
 		  <div class="simplepie_title">
 			  <h4><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h4>
       </div>
-			<?php if ($excerpt) echo '<div class="simplepie_excerpt">' . strip_tags($item->get_description(true),'<a>') . '</div>'; ?>
-      <?php if ($post_date) 
-            {
+			<?php 
+        if ($excerpt)
+        {
+          echo '<div class="simplepie_excerpt">' . strip_tags($item->get_description(true),$blog_tags) . '</div>';
+          //echo $feed->get_image_width();
+        }
+
+        if ($post_date) 
+        {
       ?>
         <div class="simplepie_date">Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></div>
       <?php } ?>
