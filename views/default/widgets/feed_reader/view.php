@@ -19,6 +19,9 @@
     
     $feed = new SimplePie($feed_url, $cache_loc);
     
+    // doubles timeout if going through a proxy
+    //$feed->set_timeout(20);
+    
     $num_posts_in_feed = $feed->get_item_quantity();
     
     // only display errors to profile owner
