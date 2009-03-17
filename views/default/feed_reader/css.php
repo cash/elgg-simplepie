@@ -21,3 +21,7 @@ SIMPLEPIE FEED WIDGET
 .simplepie_date {
   font-size: 70%;
 }
+
+.simplepie_excerpt img {
+  width: 170px;
+}
