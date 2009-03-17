@@ -7,7 +7,7 @@
     require_once $CONFIG->pluginspath . '/simplepie/simplepie.inc';
   }
   
-  $blog_tags = '<a><p><br><b><i><em><del><pre><strong><ul><ol><li><img>';
+  $blog_tags = '<a><p><br><b><i><em><del><pre><strong><ul><ol><li>';
   $feed_url = $vars['entity']->feed_url;
   if($feed_url){
 
@@ -25,7 +25,7 @@
     if (get_loggedin_userid() == page_owner())
     {        
       if (!$num_posts_in_feed)
-        echo 'Cannot find feed. Check the feed url.';
+        echo '<p>' . elgg_echo('simplepie:notfind') . '</p>';
     }
 ?>
   <div class="simplepie_blog_title">
@@ -46,7 +46,6 @@
         if ($excerpt)
         {
           echo '<div class="simplepie_excerpt">' . strip_tags($item->get_description(true),$blog_tags) . '</div>';
-          //echo $feed->get_image_width();
         }
 
         if ($post_date) 
