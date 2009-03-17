@@ -21,7 +21,8 @@
 <?php
 	echo elgg_view('input/pulldown', array(
 			'internalname' => 'params[num_items]',
-			'options_values' => array( '5' => '5',
+			'options_values' => array( '3' => '3',
+                                 '5' => '5',
 			                           '8' => '8',
 			                           '10' => '10',
 			                           '12' => '12',
