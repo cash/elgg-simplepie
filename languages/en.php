@@ -9,6 +9,7 @@ $english = array(
 	'simplepie:num_items' => 'Number of items',
 	'simplepie:excerpt' => 'Include excerpt',
 	'simplepie:post_date' => 'Include post date',
+	'simplepie:postedon' => 'Posted on',
 );
 
 add_translation("en", $english);

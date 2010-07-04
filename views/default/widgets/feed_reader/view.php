@@ -51,12 +51,19 @@ if ($feed_url) {
 		</div>
 <?php 
 		if ($excerpt) {
-			echo '<div class="simplepie_excerpt">' . strip_tags($item->get_description(true), $allow_tags) . '</div>';
+?>
+			<div class="simplepie_excerpt">
+				<?php echo strip_tags($item->get_description(true), $allow_tags); ?>
+			</div>
+<?php
 		}
 
 		if ($post_date) {
 ?>
-		<div class="simplepie_date">Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></div>
+		<div class="simplepie_date">
+			<?php echo elgg_echo('simplepie:postedon'); ?> 
+			<?php echo $item->get_date('j F Y | g:i a'); ?>
+		</div>
 <?php 
 		} 
 ?>

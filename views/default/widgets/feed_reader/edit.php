@@ -41,7 +41,10 @@
 
 <p>
 <?php 
-echo elgg_view('input/hidden', array('internalname' => 'params[excerpt]', 'js' => 'id="params[excerpt]"', 'value' => $excerpt ));
+// used a hidden input field so that something is always sent unlike a checkbox
+echo elgg_view('input/hidden', array('internalname' => 'params[excerpt]', 
+									'js' => 'id="params[excerpt]"', 
+									'value' => $excerpt ));
 echo "<input class='input-checkboxes' type='checkbox' value='' name='excerptcheckbox' onclick=\"document.getElementById('params[excerpt]').value = 1 - document.getElementById('params[excerpt]').value;\" ";
 if ($excerpt) {
 	echo "checked='yes'";
@@ -53,7 +56,9 @@ echo ' ' . elgg_echo('simplepie:excerpt');
 
 <p>
 <?php 
-echo elgg_view('input/hidden', array('internalname' => 'params[post_date]', 'js' => 'id="params[post_date]"', 'value' => $post_date ));
+echo elgg_view('input/hidden', array('internalname' => 'params[post_date]', 
+									'js' => 'id="params[post_date]"', 
+									'value' => $post_date ));
 echo "<input class='input-checkboxes' type='checkbox' value='' name='post_datecheckbox' onclick=\"document.getElementById('params[post_date]').value = 1 - document.getElementById('params[post_date]').value;\" ";
 if ($post_date) {
 	echo "checked='yes'";
