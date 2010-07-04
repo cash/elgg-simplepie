@@ -15,9 +15,12 @@ if ($feed_url) {
 	$num_items = $vars['entity']->num_items;
 	$post_date = $vars['entity']->post_date;
 	
-	$cache_loc = $CONFIG->pluginspath . '/simplepie/cache';
+	$cache_location = $CONFIG->dataroot . '/simplepie_cache/';
+	if (!file_exists($cache_location)) {
+		mkdir($cache_location, 0777);
+	}
 	
-	$feed = new SimplePie($feed_url, $cache_loc);
+	$feed = new SimplePie($feed_url, $cache_location);
 	
 	// doubles timeout if going through a proxy
 	//$feed->set_timeout(20);
