@@ -1,9 +1,9 @@
 <?php
 
-  // this is a quick hack of the compatibility script included with simple pie
+// this is a quick hack of the compatibility script included with simple pie
 
-  // Load Elgg engine
-  require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
+// Load Elgg engine
+require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
 $php_ok = (function_exists('version_compare') && version_compare(phpversion(), '4.3.0', '>='));
 $xml_ok = extension_loaded('xml');

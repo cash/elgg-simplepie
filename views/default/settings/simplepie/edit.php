@@ -1,8 +1,8 @@
 <?php
-  global $CONFIG;
-  
-  $compat_url = $CONFIG->wwwroot . 'mod/simplepie/sp_compatibility_test.php';
-  $permit_url = $CONFIG->wwwroot . 'mod/simplepie/permissions.php';
+global $CONFIG;
+
+$compat_url = $CONFIG->wwwroot . 'mod/simplepie/sp_compatibility_test.php';
+$permit_url = $CONFIG->wwwroot . 'mod/simplepie/permissions.php';
 
 ?>
 
