@@ -9,12 +9,11 @@ Proxy Server
 If your site is going through a proxy server to get to the feeds, you may 
 want to increase the timeout on the feeds (though this is unlikely as the 
 default timeout is 10 seconds). You can do this by editing 
-simplepie/views/default/widgets/feed_reader/view.php. There you can just 
+simplepie/views/default/widgets/feed_reader/content.php. There you can just
 uncomment the line $feed->set_timeout(20);
 
 
-Images
+HTML tags in feeds
 --------------------------
-Currently, images are stripped from the feeds as they are likely larger 
-than the width of the widget and will cause display issues. To include
-images, edit the widget view and add the img tag to the $allow_tags array.
+The widget allows the following tags: `<a><p><br><b><i><em><del><pre><strong><ul><ol><li><img>`.
+Other tags are stripped to avoid problems with the display of your site. 
