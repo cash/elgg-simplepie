@@ -7,23 +7,28 @@ elgg_load_library('simplepie');
 
 $allowed_tags = '<a><p><br><b><i><em><del><pre><strong><ul><ol><li><img>';
 $feed_url = $vars['entity']->feed_url;
+
 if ($feed_url) {
 
 	// get widget settings
 	$excerpt   = $vars['entity']->excerpt;
 	$num_items = $vars['entity']->num_items;
 	$post_date = $vars['entity']->post_date;
-	
+
 	$cache_location = elgg_get_data_path() . '/simplepie_cache/';
 	if (!file_exists($cache_location)) {
 		mkdir($cache_location, 0777);
 	}
-	
-	$feed = new SimplePie($feed_url, $cache_location);
-	
+
+	$feed = new SimplePie();
+	$feed->set_feed_url($feed_url);
+	$feed->set_cache_location ($cache_location);
+	$feed->handle_content_type();
+	$feed->init();
+
 	// doubles timeout if going through a proxy
 	//$feed->set_timeout(20);
-		
+
 	// only display errors to profile owner
 	$num_posts_in_feed = $feed->get_item_quantity();
 	if (!$num_posts_in_feed) {
@@ -36,7 +41,7 @@ if ($feed_url) {
 	if ($num_items > $num_posts_in_feed) {
 		$num_items = $num_posts_in_feed;
 	}
-	
+
 	$feed_link = elgg_view('output/url', array(
 		'href' => $feed->get_permalink(),
 		'text' => $feed->get_title(),
@@ -58,11 +63,11 @@ if ($feed_url) {
 
 		if ($post_date) {
 			$item_date_label = elgg_echo('simplepie:postedon');
-			$item_date = $item->get_date('j F Y | g:i a');
+			$item_date = elgg_get_friendly_time(strtotime($item->get_date()));
 			$post_date = "$item_date_label $item_date";
 		}
 
-		echo <<<HTML
+echo <<<HTML
 <li class="mbm">
 	<h4 class="mbs">$item_link</h4>
 	<div class="mbs clearfix">$excerpt</div>

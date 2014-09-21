@@ -5,7 +5,7 @@
 ?>
 
 /* ***************************************
-	SIMPLIE
+	SIMPLEPIE
 *************************************** */
 .simplepie-heading {
 	text-align: center;
